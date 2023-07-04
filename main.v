@@ -2,12 +2,13 @@ module main
 import os
 import cli
 import net
+
 fn print_help() {
-	version := os.execute("")
-	print("pm version\n\Simple package manager written in V\n\n-h\tDispaly this help\n-i\tInstall package\n-r\tRemove package\n-q\tQuery packages from local database")
+	version := os.execute("git rev-parse --short HEAD").output
+	print("pm version $version\n\nSimple package manager written in V\n\n-h\tDispaly this help\n-i\tInstall package\n-r\tRemove package\n-q\tQuery packages from local database")
 }
 fn main() {
-	mut app := cli.Command{
+	mut pm := cli.Command{
 		name: 'pm'
 		description: 'Simple package manager written in V'
 		execute: fn (cmd cli.Command) ! {
@@ -16,14 +17,21 @@ fn main() {
 		}
 		commands: [
 				cli.Command{
-				name: 'sub'
+				name: '-i'
 				execute: fn (cmd cli.Command) ! {
 					println('hello subcommand')
 					return
 				}
 			},
-		]
+				cli.Command{
+						name: '-i'
+						execute: fn (cmd cli.Command) ! {
+							println('tbd')
+							return
+						}
+				},
+			]
 	}
-	app.setup()
-	app.parse(os.args)
+	pm.setup()
+	pm.parse(os.args)
 }

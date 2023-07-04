@@ -6,7 +6,7 @@ untitled19
 *.so
 *.dylib
 *.dll
-
+./pm
 # Ignore binary output folders
 bin/
 
