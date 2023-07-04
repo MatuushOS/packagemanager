@@ -1,0 +1,10 @@
+[config]
+colors = true
+parallel-downloads = 3
+
+[mirrors]
+trust-level = "low"
+
+[mirrors.main]
+server = "https://example.com"
+trust-level.override = "medium" # simply medium
