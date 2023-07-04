@@ -1,11 +1,10 @@
 module main
 import os
 import cli
-import net
 
 fn print_help() {
 	version := os.execute("git rev-parse --short HEAD").output
-	print("pm version $version\n\nSimple package manager written in V\n\n-h\tDispaly this help\n-i\tInstall package\n-r\tRemove package\n-q\tQuery packages from local database")
+	print("pm version $version\n\nSimple package manager written in V\n\nhe\tDispaly this help\nin\tInstall package\nrm\tRemove package\nqu\tQuery packages from local database")
 }
 fn main() {
 	mut pm := cli.Command{
@@ -17,20 +16,27 @@ fn main() {
 		}
 		commands: [
 				cli.Command{
-				name: '-i'
+				name: 'in'
 				execute: fn (cmd cli.Command) ! {
-					println('hello subcommand')
+					println('tbd')
 					return
 				}
 			},
 				cli.Command{
-						name: '-i'
-						execute: fn (cmd cli.Command) ! {
-							println('tbd')
-							return
-						}
+					name: 'rm'
+					execute: fn (cmd cli.Command)! {
+						println('still tbd')
+						return
+					}
 				},
-			]
+				cli.Command{
+					name: 'qu'
+					execute: fn (cmd cli.Command)! {
+						println('still tbd')
+						return
+					}
+				}
+		]
 	}
 	pm.setup()
 	pm.parse(os.args)
