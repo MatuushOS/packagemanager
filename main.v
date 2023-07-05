@@ -4,7 +4,19 @@ import os
 import cli
 import toml
 import net.http
-import readline
+import readline { read_line }
+
+fn yesno(yes string, no string) string {
+	mut r := read_line('Do you want to install ${package}? (y/n/h): ').str
+	if &r == y {
+		return yes
+	} else if r == n {
+		return no
+		exit('SIGTERM')
+	} else if &r == h {
+		print('y\tyes\nn\t\no\nh\thelp')
+	}
+}
 
 fn print_help() {
 	version := os.execute('git rev-parse --short HEAD').output
