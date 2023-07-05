@@ -24,7 +24,7 @@ fn yesno(yes bool, no bool) string {
 fn print_help() {
 	version := os.execute('git rev-parse --short HEAD').output
 	print('pm version ${version}\n\nSimple package manager written in V\n\nhe\tDispaly this help\nin\tInstall package\nrm\tRemove package\nqu\tQuery packages from local database\ncc\tCheck config\n')
-	yesno(true)
+	yesno(true, false)
 }
 
 fn parse_config() {
