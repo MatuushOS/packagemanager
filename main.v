@@ -4,14 +4,15 @@ import os
 import cli
 import toml
 import net.http
+import readline
 
 fn print_help() {
 	version := os.execute('git rev-parse --short HEAD').output
-	print('pm version ${version}\n\nSimple package manager written in V\n\nhe\tDispaly this help\nin\tInstall package\nrm\tRemove package\nqu\tQuery packages from local database')
+	print('pm version ${version}\n\nSimple package manager written in V\n\nhe\tDispaly this help\nin\tInstall package\nrm\tRemove package\nqu\tQuery packages from local database\ncc\tCheck config\n')
 }
 
 fn parse_config() {
-	mut file := toml.parse_file('examples/config.toml') or { panic('No such file or directory') }.ast
+	file := toml.parse_file('examples/config.toml') or { panic('No such file or directory') }.ast
 	print('current config:\n\n${file}')
 }
 
@@ -42,6 +43,13 @@ fn main() {
 				name: 'qu'
 				execute: fn (cmd cli.Command) ! {
 					println('still tbd')
+					return
+				}
+			},
+			cli.Command{
+				name: 'cc'
+				execute: fn (cmd cli.Command) ! {
+					parse_config()
 					return
 				}
 			},
