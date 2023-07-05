@@ -7,4 +7,4 @@ trust-level = "low"
 
 [mirrors.main]
 server = "https://example.com"
-trust-level.override = "medium" # simply medium
+trust-level.override = "medium" # verify only repo, not packages.

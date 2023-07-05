@@ -4,20 +4,10 @@ import os
 import cli
 import toml
 import net.http
-import readline { read_line }
-
-struct Answer {
-}
-
-fn yesno() {
-	mut r := read_line('Do you want to install? (y/n/h): ') or { panic('I died') }
-	print_backtrace()
-}
 
 fn print_help() {
 	version := os.execute('git rev-parse --short HEAD').output
 	print('pm version ${version}\n\nSimple package manager written in V\n\nhe\tDispaly this help\nin\tInstall package\nrm\tRemove package\nqu\tQuery packages from local database\ncc\tCheck config\n')
-	yesno()
 }
 
 fn parse_config() {
