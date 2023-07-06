@@ -6,7 +6,7 @@ import db.sqlite
 
 pub fn print_help() {
 	version := os.execute('git rev-parse --short HEAD').output
-	print('pm version ${version}\n\nSimple package manager written in V\n\nhe\tDispaly this help\nin\tInstall package\nrm\tRemove package\nqu\tQuery packages from local database\ncc\tCheck config\n')
+	print('pm version ${version}\n\nSimple package manager written in V\n\nhelp\t\t\tDispaly this help\ninstall\t\t\tInstall package\nremove\t\t\tRemove package\nquery\t\t\tQuery packages from local database\ncheckconfig\t\tCheck config\nmkrepo\t\t\tCreate repository\n')
 }
 
 pub fn install_pkg(pkg string) string {
@@ -25,7 +25,7 @@ pub fn parse_config() {
 }
 
 pub fn mkrepo(name string, path string) {
-	os.create('${path}/repo.db') or { panic('file exists') }
+	os.execute('mkdir ${path}; touch ${path}/repo.db')
 	sqlite.connect('${path}/repo.db') or { panic('No such file or directory') }
 	println('Populating repo database with packages so PM can then see what packages are available')
 }

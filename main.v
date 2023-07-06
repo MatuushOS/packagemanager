@@ -15,28 +15,28 @@ fn main() {
 		}
 		commands: [
 			cli.Command{
-				name: 'in'
+				name: 'install'
 				execute: fn (cmd cli.Command) ! {
 					println('tbd')
 					return
 				}
 			},
 			cli.Command{
-				name: 'rm'
+				name: 'remove'
 				execute: fn (cmd cli.Command) ! {
 					println('still tbd')
 					return
 				}
 			},
 			cli.Command{
-				name: 'qu'
+				name: 'query'
 				execute: fn (cmd cli.Command) ! {
 					println('still tbd')
 					return
 				}
 			},
 			cli.Command{
-				name: 'cc'
+				name: 'checkconfig'
 				execute: fn (cmd cli.Command) ! {
 					functions.parse_config()
 					return
