@@ -1,6 +1,6 @@
 [config]
-colors = true
-parallel-downloads = 3
+colors = false # not yet implemented
+parallel-downloads = 3 # same as colors
 
 [mirrors]
 trust-level = "low"
