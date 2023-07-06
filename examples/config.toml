@@ -1,6 +1,8 @@
 [config]
 colors = false # not yet implemented
 parallel-downloads = 3 # same as colors
+bin-path = "/pm/bin" # not yet implemented
+src-path = "/pm/src" # not yet implemented
 
 [mirrors]
 trust-level = "low"
