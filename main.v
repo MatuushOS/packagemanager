@@ -48,7 +48,7 @@ fn main() {
 				execute: fn (cmd cli.Command) ! {
 					name := read_line("What's the name of your repo?: ")!
 					path := read_line("What's the path where you have packages?: ")!
-					functions.mkrepo('${name}', '${path}')
+					functions.make_repo('${name}', '${path}')
 					return
 				}
 			},

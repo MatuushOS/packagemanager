@@ -2,7 +2,6 @@ module functions
 
 import os
 import toml
-import db.sqlite
 
 pub fn print_help() {
 	version := os.execute('git rev-parse --short HEAD').output
@@ -24,7 +23,7 @@ pub fn parse_config() {
 	install_pkg('test')
 }
 
-pub fn mkrepo(name string, path string) {
-	os.execute('mkdir ${path}; touch ${path}/.pmrepo')
+pub fn make_repo(name string, path string) {
+	os.execute('mkdir -p ${path} && touch ${path}/.pmrepo').output
 	println('Populating repo database with packages so PM can then see what packages are available')
 }
