@@ -25,7 +25,6 @@ pub fn parse_config() {
 }
 
 pub fn mkrepo(name string, path string) {
-	os.execute('mkdir ${path}; touch ${path}/repo.db')
-	sqlite.connect('${path}/repo.db') or { panic('No such file or directory') }
+	os.execute('mkdir ${path}; touch ${path}/.pmrepo')
 	println('Populating repo database with packages so PM can then see what packages are available')
 }
