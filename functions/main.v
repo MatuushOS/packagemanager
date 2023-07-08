@@ -2,28 +2,16 @@ module functions
 
 import os
 import toml
+import net.http
 
 pub fn print_help() {
 	version := os.execute('git rev-parse --short HEAD').output
-	print('pm version ${version}\n\nSimple package manager written in V\n\nhelp\t\t\tDispaly this help\ninstall\t\t\tInstall package\nremove\t\t\tRemove package\nquery\t\t\tQuery packages from local database\ncheckconfig\t\tCheck config\nmkrepo\t\t\tCreate repository\n')
+	print('pm version ${version}\n\nSimple package manager written in V\n\nhelp\t\t\tDispaly this help\ninstall\t\t\tInstall package\nremove\t\t\tRemove package\nquery\t\t\tQuery packages from local database\nupdate\t\t\tCheck config\nmkrepo\t\t\tCreate repository\n')
 }
 
-pub fn install_pkg(pkg string) string {
-	println('installing package(s): ${pkg}')
-	// get mirrors from config.toml
-	parsefile := toml.parse_file('examples/config.toml') or { panic('No such file or directory') }.ast
-	mirrors := parsefile.str()
-	println('${mirrors}')
-	return pkg
-}
-
-pub fn parse_config() {
-	file := toml.parse_file('examples/config.toml') or { panic('No such file or directory') }.ast
-	print('current config:\n\n${file}')
-	install_pkg('test')
-}
-
-pub fn make_repo(name string, path string) {
-	os.execute('mkdir -p ${path} && touch ${path}/.pmrepo').output
-	println('Populating repo database with packages so PM can then see what packages are available')
+pub fn update_mirrors() {
+	current_config := toml.parse_file('examples/config.toml') or { panic(err) }
+	mirrors := current_config.value('mirrors').string()
+	println('Updating mirrors')
+	http.download_file('${mirrors}', 'repo-archive.tar.xz') or { panic('No internet') }
 }

@@ -36,9 +36,9 @@ fn main() {
 				}
 			},
 			cli.Command{
-				name: 'checkconfig'
+				name: 'update'
 				execute: fn (cmd cli.Command) ! {
-					functions.parse_config()
+					functions.update_mirrors()
 					return
 				}
 			},
@@ -48,7 +48,7 @@ fn main() {
 				execute: fn (cmd cli.Command) ! {
 					name := read_line("What's the name of your repo?: ")!
 					path := read_line("What's the path where you have packages?: ")!
-					functions.make_repo('${name}', '${path}')
+					// functions.make_repo('${name}', '${path}')
 					return
 				}
 			},
